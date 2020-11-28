@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "Animation.h"
 #include "Creature.h"
-#include "Recolectable.h"
+#include "ManaCrystal.h"
 #include "Player.h"
 #include <list>
 
@@ -10,7 +10,7 @@ class Enemy : public Actor
 {
 public:
 	Enemy(float x, float y, Game* game);
-	void update(list<Creature*>creatures, list<Recolectable*> crystals);
+	void update(list<Creature*>creatures, list<ManaCrystal*> crystals);
 	void draw(float scrollX) override;
 	bool die() override;
 	void reduceLife(int damage) override;
@@ -22,7 +22,7 @@ public:
 	int getLife() override;
 	void attackCreatures(list<Creature*>creatures);
 	void attack(Creature* creature);
-	void takeMana(list<Recolectable*> crystals);
+	void takeMana(list<ManaCrystal*> crystals);
 	void goTo(int x);
 	Creature* createCreature();
 	//void conjuro(Player* player);

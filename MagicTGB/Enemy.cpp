@@ -14,7 +14,7 @@ Enemy::Enemy(float x, float y, Game* game)
 	state = game->stateMoving;
 }
 
-void Enemy::update(list<Creature*> creatures, list<Recolectable*> crystals) {
+void Enemy::update(list<Creature*> creatures, list<ManaCrystal*> crystals) {
 	bool endAnimation = animation->update();
 
 	if (invulnerableTime > 0) {
@@ -106,7 +106,7 @@ void Enemy::attack(Creature* creature) {
 	}
 }
 
-void Enemy::takeMana(list<Recolectable*> crystals) {
+void Enemy::takeMana(list<ManaCrystal*> crystals) {
 	if (crystals.size() > 0 && crystals.front()->x > WIDTH / 2) {
 		goTo(crystals.front()->x);
 	}

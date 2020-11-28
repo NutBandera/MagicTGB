@@ -17,6 +17,9 @@ public:
 	bool controlContinue = false;
 	SDL_GameController* gamePad; // Mando
 	Background* background;
-	Actor* button;
+	Actor* buttonPlay;
+	Actor* buttonControls;
+	Actor* buttonGuide;
+	//Actor* buttonSalir;
 };
 

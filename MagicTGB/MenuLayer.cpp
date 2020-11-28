@@ -7,16 +7,19 @@ MenuLayer::MenuLayer(Game* game)
 }
 
 void MenuLayer::init() {
-	// Fondo normal, sin velocidad
-	background = new Background("res/menu_fondo.png", WIDTH * 0.5, HEIGHT * 0.5, game);
-	button = new Actor("res/boton_jugar.png", WIDTH * 0.5, HEIGHT * 0.7, 232, 72, game);
+	background = new Background("res/menu.png", WIDTH * 0.5, HEIGHT * 0.5, game);
+	buttonPlay = new Actor("res/boton-jugar.png", WIDTH * 0.5, HEIGHT * 0.3, 150, 53, game);
+	buttonControls = new Actor("res/boton-controles.png", WIDTH * 0.5, HEIGHT * 0.4, 150, 53, game);
+	buttonGuide = new Actor("res/boton-guia.png", WIDTH * 0.5, HEIGHT * 0.5, 150, 53, game);
+	
 }
 
 void MenuLayer::draw() {
 	background->draw();
-	button->draw();
-
-	SDL_RenderPresent(game->renderer); // Renderiza NO PUEDE FALTAR
+	buttonPlay->draw();
+	buttonControls->draw();
+	buttonGuide->draw();
+	SDL_RenderPresent(game->renderer); 
 }
 
 
@@ -89,7 +92,7 @@ void MenuLayer::mouseToControls(SDL_Event event) {
 
 	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
-		if (button->containsPoint(motionX, motionY)) {
+		if (buttonPlay->containsPoint(motionX, motionY)) {
 			controlContinue = true;
 		}
 	}
