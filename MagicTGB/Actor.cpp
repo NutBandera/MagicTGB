@@ -80,5 +80,7 @@ bool Actor::containsPoint(int pointX, int pointY) {
 }
 
 void Actor::reduceLife(int damage) {} // 
-void Actor::die() {} // 
+bool Actor::die() {
+	return true;
+} 
 

@@ -106,8 +106,9 @@ void Creature::reduceLife(int damage) {
 	}
 }
 
-void Creature::die() {
+bool Creature::die() {
 	life = 0;
+	return true;
 }
 
 int Creature::getLife() {

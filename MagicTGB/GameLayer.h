@@ -33,8 +33,15 @@ public:
 	void calculateScroll(); // del
 	float scrollX; // del 
 	void mouseToControls(SDL_Event event); // USO DE MOUSE
-	Actor* message;
+	
+	Actor* messageDuel;
+	Actor* messageWin;
+	Actor* messageLose;
+	Actor* messagePause;
+
 	bool pause;
+	bool winGame;
+	bool loseGame;
 
 	// Elementos de interfaz
 	Actor* buttonJump;

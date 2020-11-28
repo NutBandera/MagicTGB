@@ -14,7 +14,7 @@ public:
 	void attack(Actor* enemy);
 	void increaseLife(int points);
 	void reduceLife(int damage) override;
-	void die() override;
+	bool die() override;
 	void doubleAttack();
 	void update(Actor* enemy);
 	void draw();

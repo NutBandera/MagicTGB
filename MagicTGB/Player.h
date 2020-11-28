@@ -16,7 +16,7 @@ public:
 	void moveY(float axis);
 	void draw(float scrollX = 0) override;
 	void reduceLife(int damage) override;
-	void die() override;
+	bool die() override;
 	int shootCadence = 20;
 	int shootTime = 0;
 	void jump(int v = -16);

@@ -3,7 +3,13 @@
 GameLayer::GameLayer(Game *game)
 	: Layer(game) {
 	pause = true;
-	message = new Actor("res/mensaje_como_jugar.png", WIDTH * 0.5, HEIGHT * 0.5,
+	messageDuel = new Actor("res/mensaje_como_jugar.png", WIDTH * 0.5, HEIGHT * 0.5,
+		WIDTH, HEIGHT, game);
+	messageWin = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
+		WIDTH, HEIGHT, game);
+	messageLose = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
+		WIDTH, HEIGHT, game);
+	messagePause = new Actor("res/mensaje_como_jugar.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
 	init();
 }
@@ -216,6 +222,9 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_s: // abajo
 			controlMoveY = 1;
 			break;
+		case SDLK_p: // pausa
+			pause = true;
+			break;
 		case SDLK_SPACE: // dispara
 			controlShoot = true;
 			break;
@@ -326,7 +335,7 @@ void GameLayer::mouseToControls(SDL_Event event) {
 
 
 void GameLayer::update() {
-	if (pause) {
+	if (pause || winGame || loseGame) {
 		return;
 	}
 
@@ -364,13 +373,17 @@ void GameLayer::update() {
 	background->update();
 	player->update();
 	if (player->getLife() <= 0) {
-		player->die();
-		// end game
+		bool end = player->die();
+		if (end) {
+			loseGame = false;
+		}
 	}
 	enemy->update(playerCreatures, manaCrystals);
 	if (enemy->getLife() <= 0) {
-		enemy->die();
-		// end game
+		bool end = enemy->die();
+		if (end) {
+			winGame = true;
+		}
 	}
 
 
@@ -542,7 +555,13 @@ void GameLayer::draw() {
 	}
 
 	if (pause) {
-		message->draw();
+		messageDuel->draw();
+	}
+	if (winGame) {
+		messageWin->draw();
+	}
+	if (loseGame) {
+		messageLose->draw();
 	}
 
 	SDL_RenderPresent(game->renderer); // Renderiza

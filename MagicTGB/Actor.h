@@ -10,7 +10,7 @@ public:
 	bool isInRender(float scrollX = 0);
 	bool containsPoint(int pointX, int pointY);
 	virtual void reduceLife(int damage);
-	virtual void die();
+	virtual bool die();
 	bool clicked = false;
 	virtual int getLife();
 	int invulnerableTime = 0;

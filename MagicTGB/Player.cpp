@@ -107,9 +107,11 @@ void Player::reduceLife(int damage) {
 	}
 }
 
-void Player::die() {
+bool Player::die() {
 	invulnerableTime = 0;
-	state = game->stateDying;
+	animation = aDying;
+	bool endAnimation = animation->update();
+	return endAnimation;
 }
 
 int Player::getMana() {

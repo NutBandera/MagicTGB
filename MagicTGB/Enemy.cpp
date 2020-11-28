@@ -83,9 +83,10 @@ void Enemy::reduceLife(int damage) {
 	life -= damage;
 }
 
-void Enemy::die() {
-	//invulnerableTime = 1;
-	state = game->stateDying;
+bool Enemy::die() {
+	animation = aDying;
+	bool endAnimation = animation->update();
+	return endAnimation;
 }
 
 void Enemy::attackCreatures(list<Creature*>creatures) {
