@@ -44,6 +44,8 @@ void GameLayer::init() {
 	// Background
 	background = new Background("res/fondo1.png", WIDTH*0.5, HEIGHT*0.5, game);
 
+	controlsPanel = new Actor("res/controles.png", WIDTH * 0.21, HEIGHT * 0.89, 209, 70, game);
+
 	tiles.clear();
 	manaCrystals.clear();
 	playerCreatures.clear();
@@ -547,6 +549,8 @@ void GameLayer::draw() {
 	for (const auto& item : enemyCreatures) {
 		item->draw();
 	}
+
+	//controlsPanel->draw();
 
 	if (pause) {
 		messagePause->draw();

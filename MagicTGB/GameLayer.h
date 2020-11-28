@@ -39,6 +39,8 @@ public:
 	Actor* messageLose;
 	Actor* messagePause;
 
+	Actor* controlsPanel;
+
 	bool pause;
 	bool winGame;
 	bool loseGame;

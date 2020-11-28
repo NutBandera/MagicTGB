@@ -11,7 +11,10 @@ void MenuLayer::init() {
 	buttonPlay = new Actor("res/boton-jugar.png", WIDTH * 0.5, HEIGHT * 0.3, 150, 53, game);
 	buttonControls = new Actor("res/boton-controles.png", WIDTH * 0.5, HEIGHT * 0.4, 150, 53, game);
 	buttonGuide = new Actor("res/boton-guia.png", WIDTH * 0.5, HEIGHT * 0.5, 150, 53, game);
-	
+	messageControls = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
+		WIDTH, HEIGHT, game);
+	messageGuide = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
+		WIDTH, HEIGHT, game);
 }
 
 void MenuLayer::draw() {
@@ -61,9 +64,18 @@ void MenuLayer::processControls() {
 
 	//procesar controles, solo tiene uno
 	if (controlContinue) {
-		// Cambia la capa
+		// Cambia la capa -> elegir jugador 
 		game->layer = game->gameLayer;
 		controlContinue = false;
+	}
+	if (controlControls) {
+		messageControls->draw();
+		controlControls = false;
+	}
+	if (controlGuide) {
+		messageGuide->draw();
+		return;
+		controlGuide = false;
 	}
 }
 
@@ -95,6 +107,13 @@ void MenuLayer::mouseToControls(SDL_Event event) {
 		if (buttonPlay->containsPoint(motionX, motionY)) {
 			controlContinue = true;
 		}
+		if (buttonControls->containsPoint(motionX, motionY)) {
+			controlControls = true;
+		}
+		if (buttonGuide->containsPoint(motionX, motionY)) {
+			controlGuide = true;
+		}
+
 	}
 }
 
