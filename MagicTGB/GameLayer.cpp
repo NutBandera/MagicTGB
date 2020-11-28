@@ -2,14 +2,14 @@
 
 GameLayer::GameLayer(Game *game)
 	: Layer(game) {
-	pause = true;
-	messageDuel = new Actor("res/mensaje_como_jugar.png", WIDTH * 0.5, HEIGHT * 0.5,
+	pause = false; // draw init message 
+	messageDuel = new Actor("res/mensaje_duel.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
 	messageWin = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
 	messageLose = new Actor("res/mensaje_perder.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
-	messagePause = new Actor("res/mensaje_como_jugar.png", WIDTH * 0.5, HEIGHT * 0.5,
+	messagePause = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
 	init();
 }
@@ -50,7 +50,6 @@ void GameLayer::init() {
 	enemyCreatures.clear();
 
 	loadMap("res/" + to_string(game->currentLevel) + ".txt");
-
 }
 
 void GameLayer::processControls() {
@@ -375,7 +374,7 @@ void GameLayer::update() {
 	if (player->getLife() <= 0) {
 		bool end = player->die();
 		if (end) {
-			loseGame = false;
+			loseGame = true;
 		}
 	}
 	enemy->update(playerCreatures, manaCrystals);
@@ -555,7 +554,7 @@ void GameLayer::draw() {
 	}
 
 	if (pause) {
-		messageDuel->draw();
+		messagePause->draw();
 	}
 	if (winGame) {
 		messageWin->draw();
