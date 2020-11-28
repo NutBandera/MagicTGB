@@ -76,9 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -87,9 +90,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,11 +106,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -115,14 +124,58 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Users\nutba\Desktop\Universidad\4º\PRIMER SEMESTRE\Videojuegos\LAB\Lib\includesLibsDLLs\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameLayer.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuLayer.cpp" />
+    <ClCompile Include="Pad.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Recolectable.cpp" />
+    <ClCompile Include="RedPlayer.cpp" />
+    <ClCompile Include="Space.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Tile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Audio.h" />
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="Creature.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameLayer.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="Goblin.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="MenuLayer.h" />
+    <ClInclude Include="Pad.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Recolectable.h" />
+    <ClInclude Include="RedPlayer.h" />
+    <ClInclude Include="Space.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
