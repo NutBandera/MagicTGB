@@ -192,7 +192,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'R': {
-		Recolectable* item = new Recolectable(x, y, game);
+		ManaCrystal* item = new ManaCrystal(x, y, game);
 		item->y = item->y - item->height / 2;
 		manaCrystals.push_back(item);
 		space->addDynamicActor(item);
@@ -346,7 +346,7 @@ void GameLayer::update() {
 	if (newCrystalTime <= 0) {
 		int rX = rand() % (WIDTH - 50);
 		int rY = rand() % (HEIGHT - 100) + 100;
-		manaCrystals.push_back(new Recolectable(rX, rY, game));
+		manaCrystals.push_back(new ManaCrystal(rX, rY, game));
 		newCrystalTime = 300;
 	}
 
@@ -392,7 +392,7 @@ void GameLayer::update() {
 		player->reduceLife(1);
 	}
 
-	list<Recolectable*> deleteItems;
+	list<ManaCrystal*> deleteItems;
 	list<Creature*> deletePlayerCreatures;
 	list<Creature*> deleteEnemyCreatures;
 
@@ -483,11 +483,6 @@ void GameLayer::update() {
 		space->removeDynamicActor(delCreature);
 	}
 	deleteEnemyCreatures.clear();
-
-
-	for (const auto& crytsal : manaCrystals) {
-		crytsal->update();
-	}
 
 	for (const auto& creature : playerCreatures) {
 		if (enemyCreatures.size() > 0) {

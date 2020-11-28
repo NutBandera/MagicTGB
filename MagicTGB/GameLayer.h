@@ -9,7 +9,7 @@
 #include "Space.h"
 #include "Audio.h"
 #include "Pad.h"
-#include "Recolectable.h"
+#include "ManaCrystal.h"
 #include <list>
 #include <fstream>
 #include <sstream>
@@ -77,7 +77,7 @@ public:
 	bool saved = false;
 
 	Enemy* enemy;
-	list<Recolectable*> manaCrystals;
+	list<ManaCrystal*> manaCrystals;
 	list<Creature*> playerCreatures;
 	list<Creature*> enemyCreatures;
 };
