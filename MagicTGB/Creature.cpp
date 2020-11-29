@@ -1,12 +1,13 @@
 #include "Creature.h"
 
-Creature::Creature(int x, int y, Game* game, Animation* aIdle, Animation* aRunning, Animation* aAttacking,
-	Animation* aDying)
+Creature::Creature(int x, int y, Game* game, Animation* aIdle, Animation* aRunning, Animation* aAttackingRight,
+	Animation* aAttackingLeft, Animation* aDying)
 	: Actor("res/jugador.png", x, y, 50, 50, game) {
 
 	this->aIdle = aIdle;
 	this->aRunning = aRunning;
-	this->aAttacking = aAttacking;
+	this->aAttackingRight = aAttackingRight;
+	this->aAttackingLeft = aAttackingLeft;
 	this->aDying = aDying;
 
 	state = game->stateMoving;
@@ -28,7 +29,12 @@ void Creature::update(Actor* e) {
 		invulnerableTime--;
 	}
 	if (state == game->stateShooting) {
-		animation = aAttacking;
+		if (orientation > 0) {
+			animation = aAttackingRight;
+		}
+		else {
+			animation = aAttackingLeft;
+		}
 	}
 	if (state == game->stateDying) {
 		animation = aDying;
@@ -39,7 +45,7 @@ void Creature::update(Actor* e) {
 			animation = aIdle;
 		}
 		else {
-			animation = aRunning; // eft and right
+			animation = aRunning; 
 		}
 	}
 	if (e->getLife() > 0) {
@@ -58,6 +64,13 @@ void Creature::moveToEnemy(Actor* e) {
 	if (side == 0) {
 		if (abs(e->x - x) <= 30) { // crete get x()
 			vx = 0;
+			if (x > e->x) {
+				cout << "AAA";
+				orientation = -1;
+			}
+			else {
+				orientation = 1;
+			}
 			attack(e);
 		}
 		else {
@@ -73,11 +86,17 @@ void Creature::moveToEnemy(Actor* e) {
 	else {
 		if (abs(x - e->x) <= 30) {
 			vx = 0;
+			if (x > e->x) {
+				orientation = -1;
+			}
+			else {
+				orientation = 1;
+			}
 			attack(e);
 		}
 		else {
 			if (e->x < x) { // or equal ??
-				vx = -2;
+				vx = -2; // change orientation
 			}
 			else {
 				vx = 2;

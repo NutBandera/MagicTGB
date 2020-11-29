@@ -5,8 +5,8 @@
 class Creature : public Actor
 {
 public:
-	Creature(int x, int y, Game* game, Animation* aIdle, Animation* aRunning, Animation* aAttacking,
-		Animation* aDying);
+	Creature(int x, int y, Game* game, Animation* aIdle, Animation* aRunning, Animation* aAttackingRight,
+		Animation* aAttackingLeft,  Animation* aDying);
 
 	int life;
 	int getLife() override;
@@ -22,11 +22,13 @@ public:
 	Actor* enemy;
 
 	int state;
-	int side; // 0 - left , 1 - right -> 
+	int side; // 0 - left , 1 - right 
+	int orientation;
 
 	Animation* aIdle;
 	Animation* aRunning;
-	Animation* aAttacking;
+	Animation* aAttackingRight;
+	Animation* aAttackingLeft;
 	Animation* aDying;
 	Animation* animation;
 };
