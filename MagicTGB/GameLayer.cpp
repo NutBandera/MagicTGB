@@ -25,20 +25,20 @@ void GameLayer::init() {
 	scrollX = 0;
 
 	// Player manaCrystals
-	textManaPlayer = new Text("20", WIDTH * 0.2, HEIGHT * 0.05, game);
-	backgroundManaPlayer = new Actor("res/item.png", WIDTH * 0.25, HEIGHT * 0.06, 24, 24, game);
+	textManaPlayer = new Text("20", WIDTH * 0.16, HEIGHT * 0.05, game);
+	backgroundManaPlayer = new Actor("res/iconoMana.png", WIDTH * 0.22, HEIGHT * 0.06, 24, 24, game);
 
 	// Enemy manaCrystals
-	textManaEnemy = new Text("20", WIDTH * 0.81, HEIGHT * 0.05, game);
-	backgroundManaEnemy = new Actor("res/item.png", WIDTH * 0.755, HEIGHT * 0.06, 24, 24, game);
+	textManaEnemy = new Text("20", WIDTH * 0.83, HEIGHT * 0.05, game);
+	backgroundManaEnemy = new Actor("res/iconoMana.png", WIDTH * 0.77, HEIGHT * 0.06, 24, 24, game);
 
 	// Player life
-	textPlayerLife = new Text("20", WIDTH * 0.1, HEIGHT * 0.05, game);
-	backgroundPlayerLife = new Actor("res/icono_puntos.png", WIDTH * 0.15, HEIGHT * 0.05, 24, 24, game);
+	textPlayerLife = new Text("20", WIDTH / 2 - 72, HEIGHT * 0.05, game);
+	backgroundPlayerLife = new Actor("res/icono-vidas.png", WIDTH / 2, HEIGHT * 0.05, 232, 50, game);
 
 	// Enemy life
-	textEnemyLife = new Text("20", WIDTH * 0.93, HEIGHT * 0.05, game);
-	backgroundEnemyLife = new Actor("res/icono_puntos.png", WIDTH * 0.865, HEIGHT * 0.05, 24, 24, game);
+	textEnemyLife = new Text("20", WIDTH / 2 + 72, HEIGHT * 0.05, game);
+	//backgroundEnemyLife = new Actor("res/icono_puntos.png", WIDTH * 0.865, HEIGHT * 0.05, 24, 24, game);
 
 	// Background
 	background = new Background("res/fondo1.png", WIDTH*0.5, HEIGHT*0.5, game);
@@ -509,14 +509,14 @@ void GameLayer::calculateScroll() {
 void GameLayer::draw() {
 	calculateScroll();
 	background->draw(0);
+	backgroundPlayerLife->draw(0);
 	backgroundManaPlayer->draw(0);
 	textManaPlayer->draw();
 	backgroundManaEnemy->draw(0);
 	textManaEnemy->draw();
 	textPlayerLife->draw();
-	backgroundPlayerLife->draw(0);
 	textEnemyLife->draw();
-	backgroundEnemyLife->draw(0);
+//	backgroundEnemyLife->draw(0);
 
 	for (const auto& tile : tiles) {
 		tile->draw(0);
