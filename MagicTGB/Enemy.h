@@ -36,5 +36,7 @@ public:
 	Animation* aDead;
 	Animation* aAttacking;
 	Animation* animation;
+
+	Audio* audioAttack;
 };
 

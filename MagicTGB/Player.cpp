@@ -10,8 +10,8 @@ Player::Player(float x, float y, Game* game, Animation* aIdle, Animation* aRunni
 	this->aAttacking = aAttacking;
 	this->aDying = aDying;
 	this->aDead = aDead;
-
-	audioShoot = new Audio("res/efecto_disparo.wav", false);
+	
+	audioAttack = new Audio("res/audio-attack.wav", false);
 	state = game->stateMoving;
 }
 
@@ -124,6 +124,7 @@ void Player::increaseMana(int mana) {
 
 void Player::attack(list<Creature*> creatures) {
 	state = game->stateShooting;
+	audioAttack->play();
 	for (auto &const creature : creatures) {
 		if (creature->x <= x + 50) {
 			creature->reduceLife(1);

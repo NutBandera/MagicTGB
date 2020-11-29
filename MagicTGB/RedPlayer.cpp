@@ -32,6 +32,7 @@ RedPlayer::RedPlayer(float x, float y, Game* game)
 void RedPlayer::encantamiento(list<Creature*> creatures) {
 	if (mana >= 10) {
 		state = game->stateShooting;
+		audioAttack->play();
 		for (auto const& creature : creatures) {
 			creature->doubleAttack();
 		}
@@ -44,6 +45,7 @@ Creature* RedPlayer::crearCriatura() {
 	if (mana >= 5) {
 		state = game->stateShooting;
 		mana -= 5;
+		audioAttack->play();
 		return new Goblin(x + 50, HEIGHT - 55, game);
 	}
 	return NULL;

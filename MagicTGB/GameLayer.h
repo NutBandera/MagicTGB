@@ -8,7 +8,6 @@
 #include "Tile.h"
 #include "Space.h"
 #include "Audio.h"
-#include "Pad.h"
 #include "ManaCrystal.h"
 #include <list>
 #include <fstream>
@@ -41,6 +40,8 @@ public:
 
 	Actor* controlsPanel;
 
+	Audio* audioDie;
+
 	bool pause;
 	bool winGame;
 	bool loseGame;
@@ -48,7 +49,6 @@ public:
 	// Elementos de interfaz
 	Actor* buttonJump;
 	Actor* buttonShoot;
-	Pad* pad;
 
 	Player* player;
 	Background* background;

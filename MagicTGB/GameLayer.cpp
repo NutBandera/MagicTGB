@@ -15,12 +15,11 @@ GameLayer::GameLayer(Game *game)
 }
 
 void GameLayer::init() {
-	pad = new Pad(WIDTH * 0.15, HEIGHT * 0.80, game);
 	buttonJump = new Actor("res/boton_salto.png", WIDTH*0.9, HEIGHT*0.55, 100, 100, game);
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH*0.75, HEIGHT*0.83, 100, 100, game);
 
 	audioBackground = new Audio("res/background_music.mp3", true);
-	//audioBackground->play();
+	audioBackground->play();
 
 	space = new Space(1);
 	scrollX = 0;
@@ -45,6 +44,8 @@ void GameLayer::init() {
 	background = new Background("res/fondo1.png", WIDTH*0.5, HEIGHT*0.5, game);
 
 	controlsPanel = new Actor("res/controles.png", WIDTH * 0.21, HEIGHT * 0.89, 209, 70, game);
+
+	audioDie = new Audio("res/audio-die.wav", false);
 
 	tiles.clear();
 	manaCrystals.clear();
@@ -286,13 +287,7 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
-		if (pad->containsPoint(motionX, motionY)) {
-			pad->clicked = true;
-			controlMoveX = pad->getOrientationX(motionX);
-			if (controlMoveX > -20 && controlMoveX < 20) {
-				controlMoveX = 0;
-			}
-		}
+
 		if (buttonShoot->containsPoint(motionX, motionY)) {
 			controlShoot = true;
 		}
@@ -303,13 +298,6 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	}
 	// Cada vez que se mueve
 	if (event.type == SDL_MOUSEMOTION) {
-		if (pad->clicked && pad->containsPoint(motionX, motionY)) {
-			controlMoveX = pad->getOrientationX(motionX);
-		}
-		else {
-			pad->clicked = false;
-			controlMoveX = 0;
-		}
 		if (buttonShoot->containsPoint(motionX, motionY) == false) {
 			controlShoot = false;
 		}
@@ -325,10 +313,6 @@ void GameLayer::mouseToControls(SDL_Event event) {
 		}
 		if (buttonJump->containsPoint(motionX, motionY)) {
 			controlMoveY = 0;
-		}
-		if (pad->containsPoint(motionX, motionY)) {
-			pad->clicked = false;
-			controlMoveX = 0;
 		}
 	}
 }
@@ -376,6 +360,7 @@ void GameLayer::update() {
 	if (player->getLife() <= 0) {
 		bool end = player->die();
 		if (end) {
+			audioDie->play();
 			loseGame = true;
 		}
 	}
@@ -383,6 +368,7 @@ void GameLayer::update() {
 	if (enemy->getLife() <= 0) {
 		bool end = enemy->die();
 		if (end) {
+			audioDie->play();
 			winGame = true;
 		}
 	}

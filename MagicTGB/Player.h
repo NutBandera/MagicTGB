@@ -41,7 +41,8 @@ public:
 	Animation* aDying;
 	Animation* aDead;
 	Animation* animation;
-	Audio* audioShoot;
+
+	Audio* audioAttack;
 
 	int state;
 };

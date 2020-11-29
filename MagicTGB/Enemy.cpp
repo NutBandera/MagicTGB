@@ -11,6 +11,7 @@ Enemy::Enemy(float x, float y, Game* game)
 	aAttacking = new Animation("res/Enemy/attack.png", width, height, 2000, 121, 3, 8, false, game);
 	aDead = new Animation("res/Enemy/dead.png", width, height, 168, 121, 6, 1, false, game);
 	animation = aIdle;
+	audioAttack = new Audio("res/audio-attack.wav", false);
 	state = game->stateMoving;
 }
 
@@ -136,6 +137,7 @@ Creature* Enemy::createCreature() {
 	if (mana >= 2) {
 		state = game->stateShooting;
 		mana -= 2;
+		audioAttack->play();
 		return new Ghost(x - 50, HEIGHT - 55, game);
 	}
 	return NULL;
