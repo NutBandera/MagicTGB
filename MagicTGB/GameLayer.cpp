@@ -2,8 +2,9 @@
 
 GameLayer::GameLayer(Game *game)
 	: Layer(game) {
-	pause = false; // draw init message 
-	messageDuel = new Actor("res/mensaje_duel.png", WIDTH * 0.5, HEIGHT * 0.5,
+	pause = false;  
+	guide = true;
+	messageGuide = new Actor("res/mensaje_guia.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
 	messageWin = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
 		WIDTH, HEIGHT, game);
@@ -85,6 +86,7 @@ void GameLayer::processControls() {
 
 	if (controlContinue) {
 		pause = false;
+		guide = false;
 		controlContinue = false;
 	}
 
@@ -322,7 +324,7 @@ void GameLayer::mouseToControls(SDL_Event event) {
 
 
 void GameLayer::update() {
-	if (pause || winGame || loseGame) {
+	if (pause || guide || winGame || loseGame) {
 		return;
 	}
 
@@ -356,7 +358,7 @@ void GameLayer::update() {
 				space->addDynamicActor(c);
 			}
 		}
-		newEnemyAttack = 3000000;
+		newEnemyAttack = 300;
 	}
 
 	space->update();
@@ -546,6 +548,9 @@ void GameLayer::draw() {
 
 	if (pause) {
 		messagePause->draw();
+	}
+	if (guide) {
+		messageGuide->draw();
 	}
 	if (winGame) {
 		messageWin->draw();

@@ -8,20 +8,12 @@ MenuLayer::MenuLayer(Game* game)
 
 void MenuLayer::init() {
 	background = new Background("res/menu.png", WIDTH * 0.5, HEIGHT * 0.5, game);
-	buttonPlay = new Actor("res/boton-jugar.png", WIDTH * 0.5, HEIGHT * 0.3, 150, 53, game);
-	buttonControls = new Actor("res/boton-controles.png", WIDTH * 0.5, HEIGHT * 0.4, 150, 53, game);
-	buttonGuide = new Actor("res/boton-guia.png", WIDTH * 0.5, HEIGHT * 0.5, 150, 53, game);
-	messageControls = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
-		WIDTH, HEIGHT, game);
-	messageGuide = new Actor("res/mensaje_pausa.png", WIDTH * 0.5, HEIGHT * 0.5,
-		WIDTH, HEIGHT, game);
+	buttonPlay = new Actor("res/boton-jugar.png", WIDTH * 0.5, HEIGHT * 0.4, 150, 53, game);
 }
 
 void MenuLayer::draw() {
 	background->draw();
 	buttonPlay->draw();
-	buttonControls->draw();
-	buttonGuide->draw();
 	SDL_RenderPresent(game->renderer); 
 }
 
@@ -68,15 +60,6 @@ void MenuLayer::processControls() {
 		game->layer = game->gameLayer;
 		controlContinue = false;
 	}
-	if (controlControls) {
-		messageControls->draw();
-		controlControls = false;
-	}
-	if (controlGuide) {
-		messageGuide->draw();
-		return;
-		controlGuide = false;
-	}
 }
 
 void MenuLayer::keysToControls(SDL_Event event) {
@@ -106,12 +89,6 @@ void MenuLayer::mouseToControls(SDL_Event event) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		if (buttonPlay->containsPoint(motionX, motionY)) {
 			controlContinue = true;
-		}
-		if (buttonControls->containsPoint(motionX, motionY)) {
-			controlControls = true;
-		}
-		if (buttonGuide->containsPoint(motionX, motionY)) {
-			controlGuide = true;
 		}
 
 	}

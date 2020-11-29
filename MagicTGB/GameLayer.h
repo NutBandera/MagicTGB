@@ -33,7 +33,7 @@ public:
 	float scrollX; // del 
 	void mouseToControls(SDL_Event event); // USO DE MOUSE
 	
-	Actor* messageDuel;
+	Actor* messageGuide;
 	Actor* messageWin;
 	Actor* messageLose;
 	Actor* messagePause;
@@ -43,6 +43,7 @@ public:
 	Audio* audioDie;
 
 	bool pause;
+	bool guide;
 	bool winGame;
 	bool loseGame;
 

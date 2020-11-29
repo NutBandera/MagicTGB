@@ -20,10 +20,6 @@ public:
 	SDL_GameController* gamePad; // Mando
 	Background* background;
 	Actor* buttonPlay;
-	Actor* buttonControls;
-	Actor* buttonGuide;
-	//Actor* buttonSalir;
-	Actor* messageControls;
-	Actor* messageGuide;
+
 };
 

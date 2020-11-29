@@ -69,8 +69,10 @@ void Creature::moveToEnemy(Actor* e) {
 		if (abs(e->x - x) <= 30) { // crete get x()
 			vx = 0;
 			if (x > e->x) {
+				orientation = -1;
 			}
 			else {
+				orientation = 1;
 			}
 			attack(e);
 		}
