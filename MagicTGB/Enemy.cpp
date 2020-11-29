@@ -56,20 +56,21 @@ void Enemy::update(list<Creature*> creatures, list<ManaCrystal*> crystals) {
 	}
 
 	attackCreatures(creatures);
-	takeMana(crystals); // solo si no hay criaturas
+	if (creatures.size() == 0) {
+		takeMana(crystals); 
+	}
 
 }
 
 void Enemy::draw(float scrollX) {
-	/*if (invulnerableTime == 0) {
+	if (invulnerableTime == 0) {
 		animation->draw(x, y);
 	}
 	else {
 		if (invulnerableTime % 10 >= 0 && invulnerableTime % 10 <= 5) {
 			animation->draw(x, y);
 		}
-	}*/
-	animation->draw(x, y);
+	}
 }
 
 int Enemy::getLife() {
@@ -77,11 +78,10 @@ int Enemy::getLife() {
 }
 
 void Enemy::reduceLife(int damage) {
-	/*if (invulnerableTime <= 0 && life > 0) {
-		invulnerableTime = 100;
+	if (invulnerableTime <= 0 && life > 0) {
+		invulnerableTime = 20;
 		life -= damage;
-	}*/
-	life -= damage;
+	}
 }
 
 bool Enemy::die() {
@@ -97,13 +97,9 @@ void Enemy::attackCreatures(list<Creature*>creatures) {
 }
 
 void Enemy::attack(Creature* creature) {
-	if (creature->x > WIDTH / 2 && creature->getLife() > 0) { // x = x-50 ??
+	if (creature->x > WIDTH / 2 && creature->getLife() > 0 && abs(x-creature->x) <= 30) { 
 		state = game->stateShooting;
-		creature->reduceLife(2); // damage enemy variable
-
-	}
-	else if (creature->getLife() <= 0) { // not here
-		creature->die();
+		creature->reduceLife(damage);
 	}
 }
 
@@ -143,10 +139,12 @@ Creature* Enemy::createCreature() {
 	return NULL;
 }
 
-/*void Enemy::conjuro(Player* player) {
+int Enemy::conjuro() {
 	if (mana >= 10) {
 		state = game->stateShooting;
-		player->reduceLife(4);
 		mana -= 10;
+		audioAttack->play();
+		return 4;
 	}
-}*/
+	return 0;
+}

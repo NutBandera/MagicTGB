@@ -24,7 +24,7 @@ public:
 	void increaseMana(int mana);
 	void attack(list<Creature*> creatures);
 
-	//virtual void conjuro(Enemy* enemy);
+	virtual int conjuro();
 	virtual void encantamiento(list<Creature*> creatures);
 	virtual Creature* crearCriatura();
 

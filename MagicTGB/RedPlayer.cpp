@@ -20,17 +20,19 @@ RedPlayer::RedPlayer(float x, float y, Game* game)
 
 
 // Inferno - 10 points of mana
-/*void RedPlayer::conjuro(Enemy* enemy) {
+int RedPlayer::conjuro() {
 	if (mana >= 10) {
 		state = game->stateShooting;
-		enemy->reduceLife(4);
 		mana -= 10;
+		audioAttack->play();
+		return 4;
 	}
-}*/
+	return 0;
+}
 
 // Fervor - 10 points of mana 
 void RedPlayer::encantamiento(list<Creature*> creatures) {
-	if (mana >= 10) {
+	if (mana >= 10 && creatures.size() > 0) {
 		state = game->stateShooting;
 		audioAttack->play();
 		for (auto const& creature : creatures) {

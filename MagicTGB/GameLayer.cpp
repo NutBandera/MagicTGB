@@ -108,8 +108,10 @@ void GameLayer::processControls() {
 	}
 
 	if (controlConjuro) {
-		//player->conjuro(enemy);
-		enemy->reduceLife(4); // FINISH 
+		int damage = player->conjuro();
+		if (damage > 0) {
+			enemy->reduceLife(damage);
+		}
 		controlConjuro = false;
 	}
 	if (controlCriatura) {
@@ -341,9 +343,12 @@ void GameLayer::update() {
 	if (newEnemyAttack <= 0) {
 		option = rand() % 5;
 		if (option == 0) {
-			//enemy->conjuro(player);
-			player->reduceLife(4);
+			int damage = enemy->conjuro();
+			if (damage > 0) {
+				player->reduceLife(damage);
+			}
 		}
+			
 		else {
 			Creature* c = enemy->createCreature();
 			if (c != NULL) {
@@ -376,7 +381,7 @@ void GameLayer::update() {
 
 	textManaEnemy->content = to_string(enemy->getMana());
 
-	if (player->x >= WIDTH / 2) { // usar x de la middle tile 
+	if (player->x >= WIDTH / 2) {  
 		player->reduceLife(1);
 	}
 
@@ -411,7 +416,7 @@ void GameLayer::update() {
 
 	// comprobar vida de cada criatura y eliminar si muerta 
 	for (auto &const creature : playerCreatures) {
-		if (creature->getLife() == 0) {
+		if (creature->getLife() <= 0) {
 			bool cInList = std::find(deletePlayerCreatures.begin(),
 				deletePlayerCreatures.end(),
 				creature) != deletePlayerCreatures.end();
@@ -433,7 +438,8 @@ void GameLayer::update() {
 	}
 
 	for (auto &const creature : enemyCreatures) {
-		if (creature->getLife() == 0) {
+		if (creature->getLife() <= 0) {
+			
 			bool cInList = std::find(deleteEnemyCreatures.begin(),
 				deleteEnemyCreatures.end(),
 				creature) != deleteEnemyCreatures.end();

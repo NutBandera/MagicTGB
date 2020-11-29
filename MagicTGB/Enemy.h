@@ -17,6 +17,7 @@ public:
 	int state;
 	int life = 20;
 	int mana = 20;
+	int damage = 2;
 	int getMana();
 	void increaseMana(int mana);
 	int getLife() override;
@@ -25,7 +26,7 @@ public:
 	void takeMana(list<ManaCrystal*> crystals);
 	void goTo(int x);
 	Creature* createCreature();
-	//void conjuro(Player* player);
+	int conjuro();
 
 	float vxIntelligence; // eliminar
 

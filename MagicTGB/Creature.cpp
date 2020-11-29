@@ -39,7 +39,7 @@ void Creature::update(Actor* e) {
 			animation = aIdle;
 		}
 		else {
-			animation = aRunning;
+			animation = aRunning; // eft and right
 		}
 	}
 	if (e->getLife() > 0) {
@@ -55,9 +55,8 @@ void Creature::draw() {
 }
 
 void Creature::moveToEnemy(Actor* e) {
-	//Cuando la distancia entre tú y tu enemigo sea menor de 10 -> parar y atacar
 	if (side == 0) {
-		if (e->x - x <= 30) { // crete get x()
+		if (abs(e->x - x) <= 30) { // crete get x()
 			vx = 0;
 			attack(e);
 		}
@@ -72,7 +71,7 @@ void Creature::moveToEnemy(Actor* e) {
 
 	}
 	else {
-		if (x - e->x <= 30) {
+		if (abs(x - e->x) <= 30) {
 			vx = 0;
 			attack(e);
 		}
@@ -94,9 +93,6 @@ void Creature::attack(Actor* e) {
 		state = game->stateShooting;
 		e->reduceLife(damage);
 	}
-	if (e->getLife() <= 0) {
-		e->die();
-	}
 }
 
 void Creature::reduceLife(int damage) {
@@ -104,11 +100,6 @@ void Creature::reduceLife(int damage) {
 		invulnerableTime = 50;
 		life -= damage;
 	}
-}
-
-bool Creature::die() {
-	life = 0;
-	return true;
 }
 
 int Creature::getLife() {

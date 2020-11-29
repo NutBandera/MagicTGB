@@ -102,7 +102,7 @@ void Player::jump(int v) {
 
 void Player::reduceLife(int damage) {
 	if (invulnerableTime <= 0 && life > 0) {
-		invulnerableTime = 70; // ? 
+		invulnerableTime = 20; 
 		life -= damage;
 	}
 }
@@ -132,9 +132,10 @@ void Player::attack(list<Creature*> creatures) {
 	}
 }
 
-/*void Player::conjuro(Enemy* enemy)
+int Player::conjuro()
 {
-}*/
+	return 0;
+}
 
 void Player::encantamiento(list<Creature*> creatures) {}
 

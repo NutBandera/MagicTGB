@@ -6,7 +6,7 @@ class RedPlayer :
 {
 public:
 	RedPlayer(float x, float y, Game* game);
-//	void conjuro(Enemy* enemy) override;
+	int conjuro() override;
 	void encantamiento(list<Creature*>creatures) override;
 	Creature* crearCriatura() override;
 };
