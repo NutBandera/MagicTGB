@@ -331,7 +331,7 @@ void GameLayer::update() {
 	newCrystalTime--;
 	if (newCrystalTime <= 0) {
 		int rX = rand() % (WIDTH - 50);
-		int rY = rand() % (HEIGHT - 100) + 100;
+		int rY = (rand() % (HEIGHT - 400)) + 200;
 		manaCrystals.push_back(new ManaCrystal(rX, rY, game));
 		newCrystalTime = 300;
 	}
@@ -351,7 +351,7 @@ void GameLayer::update() {
 				space->addDynamicActor(c);
 			}
 		}
-		newEnemyAttack = 300;
+		newEnemyAttack = 3000000;
 	}
 
 	space->update();
