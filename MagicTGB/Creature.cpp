@@ -1,11 +1,12 @@
 #include "Creature.h"
 
-Creature::Creature(int x, int y, Game* game, Animation* aIdle, Animation* aRunning, Animation* aAttackingRight,
-	Animation* aAttackingLeft, Animation* aDying)
+Creature::Creature(int x, int y, Game* game, Animation* aIdle, Animation* aRunningRight, Animation* aRunningLeft,
+	Animation* aAttackingRight, Animation* aAttackingLeft, Animation* aDying)
 	: Actor("res/jugador.png", x, y, 50, 50, game) {
 
 	this->aIdle = aIdle;
-	this->aRunning = aRunning;
+	this->aRunningRight = aRunningRight;
+	this->aRunningLeft = aRunningLeft;
 	this->aAttackingRight = aAttackingRight;
 	this->aAttackingLeft = aAttackingLeft;
 	this->aDying = aDying;
@@ -44,8 +45,11 @@ void Creature::update(Actor* e) {
 		if (vx == 0) {
 			animation = aIdle;
 		}
+		else if (vx > 0){
+			animation = aRunningRight; 
+		}
 		else {
-			animation = aRunning; 
+			animation = aRunningLeft;
 		}
 	}
 	if (e->getLife() > 0) {
@@ -65,11 +69,8 @@ void Creature::moveToEnemy(Actor* e) {
 		if (abs(e->x - x) <= 30) { // crete get x()
 			vx = 0;
 			if (x > e->x) {
-				cout << "AAA";
-				orientation = -1;
 			}
 			else {
-				orientation = 1;
 			}
 			attack(e);
 		}
@@ -96,9 +97,11 @@ void Creature::moveToEnemy(Actor* e) {
 		}
 		else {
 			if (e->x < x) { // or equal ??
-				vx = -2; // change orientation
+				orientation = -1;
+				vx = -2;
 			}
 			else {
+				orientation = 1;
 				vx = 2;
 			}
 		}
