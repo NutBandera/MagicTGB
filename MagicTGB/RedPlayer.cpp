@@ -4,8 +4,8 @@
 RedPlayer::RedPlayer(float x, float y, Game* game)
 	: Player(x, y, game, aIdle, aRunningRight, aRunningLeft, aAttacking, aJumping, aDying, aDead) {
 
-	aIdle = new Animation("res/RedPlayer/idle.png", width, height, 800, 128, 6, 4, false, game);
-	aRunningRight = new Animation("res/RedPlayer/run.png", width, height, 1600, 129, 6, 8, false, game);
+	aIdle = new Animation("res/RedPlayer/idle.png", width, height, 462, 140, 6, 6, false, game);
+	aRunningRight = new Animation("res/RedPlayer/run-right.png", width, height, 616, 140, 4, 8, false, game);
 	aRunningLeft = new Animation("res/runLeft.png", width, height, 2000, 250, 6, 8, false, game); // modify
 	aAttacking = new Animation("res/RedPlayer/attack.png", width, height,
 		800, 129, 3, 4, false, game);

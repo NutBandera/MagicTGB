@@ -2,7 +2,7 @@
 
 Player::Player(float x, float y, Game* game, Animation* aIdle, Animation* aRunningRight, Animation* aRunningLeft,
 	Animation* aAttacking, Animation* aJumping, Animation* aDying, Animation* aDead)
-	: Actor("res/jugador.png", x, y, 300, 300, game) {
+	: Actor("res/jugador.png", x, y, 100, 200, game) {
 
 	this->aIdle = aIdle;
 	this->aRunningRight = aRunningRight;
