@@ -25,12 +25,6 @@ void Enemy::update(list<Creature*> creatures, list<ManaCrystal*> crystals) {
 		if (state == game->stateShooting) {
 			state = game->stateMoving;
 		}
-		if (state == game->stateHurting) {
-			state = game->stateMoving;
-		}
-		if (state == game->stateDying) {
-			state = game->stateDead;
-		}
 	}
 
 	if (state == game->stateMoving) {
@@ -50,9 +44,6 @@ void Enemy::update(list<Creature*> creatures, list<ManaCrystal*> crystals) {
 	}
 	if (state == game->stateDying) {
 		animation = aDying;
-	}
-	if (state == game->stateDead) {
-		animation = aDead;
 	}
 
 	attackCreatures(creatures);
@@ -79,7 +70,7 @@ int Enemy::getLife() {
 
 void Enemy::reduceLife(int damage) {
 	if (invulnerableTime <= 0 && life > 0) {
-		invulnerableTime = 20;
+		invulnerableTime = 70;
 		life -= damage;
 	}
 }

@@ -17,7 +17,7 @@ public:
 	int state;
 	int life = 20;
 	int mana = 20;
-	int damage = 2;
+	int damage = 4;
 	int getMana();
 	void increaseMana(int mana);
 	int getLife() override;

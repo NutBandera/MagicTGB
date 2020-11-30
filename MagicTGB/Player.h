@@ -10,17 +10,12 @@ class Player : public Actor
 {
 public:
 	Player(float x, float y, Game* game, Animation* aIdle, Animation* aRunningRight, Animation* aRunningLeft,
-		Animation* aAttacking, Animation* aJumping, Animation* aDying, Animation* aDead);
+		Animation* aAttacking, Animation* aDying);
 	void update();
 	void moveX(float axis);
-	void moveY(float axis);
 	void draw(float scrollX = 0) override;
 	void reduceLife(int damage) override;
 	bool die() override;
-	int shootCadence = 20;
-	int shootTime = 0;
-	void jump(int v = -16);
-	bool onAir;
 	void increaseMana(int mana);
 	void attack(list<Creature*> creatures);
 
@@ -37,9 +32,7 @@ public:
 	Animation* aRunningRight;
 	Animation* aRunningLeft;
 	Animation* aAttacking;
-	Animation* aJumping;
 	Animation* aDying;
-	Animation* aDead;
 	Animation* animation;
 
 	Audio* audioAttack;

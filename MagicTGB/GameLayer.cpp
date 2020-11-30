@@ -20,7 +20,7 @@ void GameLayer::init() {
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH*0.75, HEIGHT*0.83, 100, 100, game);
 
 	audioBackground = new Audio("res/background_music.mp3", true);
-	audioBackground->play();
+	//audioBackground->play();
 
 	space = new Space(1);
 	scrollX = 0;
@@ -98,10 +98,6 @@ void GameLayer::processControls() {
 	}
 	else {
 		player->moveX(0);
-	}
-
-	if (controlMoveY < 0) {
-		player->jump();
 	}
 
 	if (controlShoot) {
@@ -222,12 +218,6 @@ void GameLayer::keysToControls(SDL_Event event) {
 			controlMoveX = -1;
 			break;
 		}
-		case SDLK_w: // arriba
-			controlMoveY = -1;
-			break;
-		case SDLK_s: // abajo
-			controlMoveY = 1;
-			break;
 		case SDLK_p: // pausa
 			pause = true;
 			break;
@@ -254,16 +244,6 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_a: // izquierda
 			if (controlMoveX == -1) {
 				controlMoveX = 0;
-			}
-			break;
-		case SDLK_w: // arriba
-			if (controlMoveY == -1) {
-				controlMoveY = 0;
-			}
-			break;
-		case SDLK_s: // abajo
-			if (controlMoveY == 1) {
-				controlMoveY = 0;
 			}
 			break;
 		case SDLK_j:

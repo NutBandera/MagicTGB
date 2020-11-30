@@ -2,19 +2,15 @@
 #include "Goblin.h"
 
 RedPlayer::RedPlayer(float x, float y, Game* game)
-	: Player(x, y, game, aIdle, aRunningRight, aRunningLeft, aAttacking, aJumping, aDying, aDead) {
+	: Player(x, y, game, aIdle, aRunningRight, aRunningLeft, aAttacking, aDying) {
 
-	aIdle = new Animation("res/RedPlayer/idle.png", width, height, 462, 140, 6, 6, false, game);
-	aRunningRight = new Animation("res/RedPlayer/run-right.png", width, height, 616, 140, 4, 8, false, game);
-	aRunningLeft = new Animation("res/runLeft.png", width, height, 2000, 250, 6, 8, false, game); // modify
-	aAttacking = new Animation("res/RedPlayer/attack.png", width, height,
-		800, 129, 3, 4, false, game);
-	aJumping = new Animation("res/jugador_saltando_derecha.png", width, height,
-		160, 40, 6, 2, false, game); // add fall
-	aDying = new Animation("res/RedPlayer/die.png", width, height,
-		1400, 128, 6, 7, false, game);
-	aDead = new Animation("res/RedPlayer/dead.png", width, height,
-		216, 52, 6, 1, false, game);
+	aIdle = new Animation("res/Player/idle.png", width, height, 936, 142, 6, 6, false, game);
+	aRunningRight = new Animation("res/Player/run-right.png", width, height, 1248, 142, 4, 8, false, game);
+	aRunningLeft = new Animation("res/Player/run-left.png", width, height, 1248, 142, 4, 8, false, game); 
+	aAttacking = new Animation("res/Player/attack.png", width, height,
+		1248, 142, 3, 8, false, game);
+	aDying = new Animation("res/Player/die.png", width, height,
+		1092, 142, 6, 7, false, game);
 	animation = aIdle;
 }
 
