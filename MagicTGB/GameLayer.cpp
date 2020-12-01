@@ -171,7 +171,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 	}
 
 	case '1': {
-		player = new RedPlayer(x, y, game);
+		player = new Player(x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
 		space->addDynamicActor(player);
@@ -345,6 +345,7 @@ void GameLayer::update() {
 	background->update();
 	player->update();
 	if (player->getLife() <= 0) {
+		textPlayerLife->content = "0";
 		bool end = player->die();
 		if (end) {
 			audioDie->play();
@@ -353,6 +354,7 @@ void GameLayer::update() {
 	}
 	enemy->update(playerCreatures, manaCrystals);
 	if (enemy->getLife() <= 0) {
+		textEnemyLife->content = "0";
 		bool end = enemy->die();
 		if (end) {
 			audioDie->play();

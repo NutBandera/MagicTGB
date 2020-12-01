@@ -9,8 +9,7 @@
 class Player : public Actor
 {
 public:
-	Player(float x, float y, Game* game, Animation* aIdle, Animation* aRunningRight, Animation* aRunningLeft,
-		Animation* aAttacking, Animation* aDying);
+	Player(float x, float y, Game* game);
 	void update();
 	void moveX(float axis);
 	void draw(float scrollX = 0) override;
@@ -19,9 +18,9 @@ public:
 	void increaseMana(int mana);
 	void attack(list<Creature*> creatures);
 
-	virtual int conjuro();
-	virtual void encantamiento(list<Creature*> creatures);
-	virtual Creature* crearCriatura();
+	int conjuro();
+	void encantamiento(list<Creature*> creatures);
+	Creature* crearCriatura();
 
 	int life = 20;
 	int mana = 20;

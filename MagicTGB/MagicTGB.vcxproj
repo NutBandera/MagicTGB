@@ -150,7 +150,6 @@
     <ClCompile Include="MenuLayer.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ManaCrystal.cpp" />
-    <ClCompile Include="RedPlayer.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -170,7 +169,6 @@
     <ClInclude Include="MenuLayer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ManaCrystal.h" />
-    <ClInclude Include="RedPlayer.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Tile.h" />
