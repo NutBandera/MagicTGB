@@ -15,7 +15,7 @@ public:
 	bool die() override;
 	void reduceLife(int damage) override;
 	int state;
-	int life = 1;
+	int life = 20;
 	int mana = 20;
 	int damage = 4;
 	int getMana();
@@ -27,8 +27,6 @@ public:
 	void goTo(int x);
 	Creature* createCreature();
 	int conjuro();
-
-	float vxIntelligence; // eliminar
 
 	Animation* aIdle;
 	Animation* aRunningFront;

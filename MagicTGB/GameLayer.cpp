@@ -48,6 +48,8 @@ void GameLayer::init() {
 
 	audioDie = new Audio("res/audio-die.wav", false);
 
+	buttonReset = new Actor("res/boton-reset.png", WIDTH * 0.5, HEIGHT * 0.7, 157, 53, game);
+
 	tiles.clear();
 	manaCrystals.clear();
 	playerCreatures.clear();
@@ -271,32 +273,8 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
-
-		if (buttonShoot->containsPoint(motionX, motionY)) {
-			controlShoot = true;
-		}
-		if (buttonJump->containsPoint(motionX, motionY)) {
-			controlMoveY = -1;
-		}
-
-	}
-	// Cada vez que se mueve
-	if (event.type == SDL_MOUSEMOTION) {
-		if (buttonShoot->containsPoint(motionX, motionY) == false) {
-			controlShoot = false;
-		}
-		if (buttonJump->containsPoint(motionX, motionY) == false) {
-			controlMoveY = 0;
-		}
-
-	}
-	// Cada vez que levantan el click
-	if (event.type == SDL_MOUSEBUTTONUP) {
-		if (buttonShoot->containsPoint(motionX, motionY)) {
-			controlShoot = false;
-		}
-		if (buttonJump->containsPoint(motionX, motionY)) {
-			controlMoveY = 0;
+		if (buttonReset->containsPoint(motionX, motionY)) {
+			controlReset = true;
 		}
 	}
 }
@@ -304,8 +282,20 @@ void GameLayer::mouseToControls(SDL_Event event) {
 
 
 void GameLayer::update() {
-	if (pause || guide || winGame || loseGame) {
+	if (pause || guide) {
 		return;
+	}
+
+	if (winGame || loseGame) {
+		if (controlReset) {
+			controlReset = false;
+			winGame = false;
+			loseGame = false;
+			init();
+		}
+		else {
+			return;
+		}
 	}
 
 	textPlayerLife->content = to_string(player->getLife());
@@ -408,16 +398,6 @@ void GameLayer::update() {
 			if (!cInList) {
 				deletePlayerCreatures.push_back(creature);
 			}
-			/*for (auto &const enemyCreature : enemyCreatures) {
-				if (playerCreatures.size() > 0) {
-					enemyCreature->setEnemy(playerCreatures.front());
-				}
-				else {
-					enemyCreature->setEnemy(player);
-				}
-			}*/
-
-			//updateCurrentEnemy();
 		}
 	}
 
@@ -431,15 +411,6 @@ void GameLayer::update() {
 			if (!cInList) {
 				deleteEnemyCreatures.push_back(creature);
 			}
-			/*for (auto &const playerCreature : playerCreatures) {
-				if (enemyCreatures.size() > 0) {
-					playerCreature->setEnemy(enemyCreatures.front());
-				}
-				else {
-					playerCreature->setEnemy(enemy);
-				}
-			}*/
-			//updateCurrentEnemy();
 		}
 	}
 
@@ -506,7 +477,6 @@ void GameLayer::draw() {
 	textManaEnemy->draw();
 	textPlayerLife->draw();
 	textEnemyLife->draw();
-//	backgroundEnemyLife->draw(0);
 
 	for (const auto& tile : tiles) {
 		tile->draw(0);
@@ -536,9 +506,11 @@ void GameLayer::draw() {
 	}
 	if (winGame) {
 		messageWin->draw();
+		buttonReset->draw();
 	}
 	if (loseGame) {
 		messageLose->draw();
+		buttonReset->draw();
 	}
 
 	SDL_RenderPresent(game->renderer); // Renderiza

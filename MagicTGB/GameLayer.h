@@ -73,6 +73,7 @@ public:
 	bool controlConjuro = false;
 	bool controlCriatura = false;
 	bool controlEncantamiento = false;
+	bool controlReset = false;
 	int controlMoveY = 0;
 	int controlMoveX = 0;
 
@@ -82,4 +83,6 @@ public:
 	list<ManaCrystal*> manaCrystals;
 	list<Creature*> playerCreatures;
 	list<Creature*> enemyCreatures;
+
+	Actor* buttonReset;
 };
