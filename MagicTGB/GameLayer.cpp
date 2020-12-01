@@ -92,10 +92,10 @@ void GameLayer::processControls() {
 		controlContinue = false;
 	}
 
-	if (controlMoveX > 0) {
+	if (controlMoveX > 0 && player->x != WIDTH) {
 		player->moveX(1);
 	}
-	else if (controlMoveX < 0) {
+	else if (controlMoveX < 0 && player->x >= 50) {
 		player->moveX(-1);
 	}
 	else {
