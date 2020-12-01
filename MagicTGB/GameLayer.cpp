@@ -54,7 +54,7 @@ void GameLayer::init() {
 	playerCreatures.clear();
 	enemyCreatures.clear();
 
-	loadMap("res/" + to_string(game->currentLevel) + ".txt");
+	loadMap("res/0.txt");
 }
 
 void GameLayer::processControls() {
@@ -128,8 +128,6 @@ void GameLayer::processControls() {
 
 	textManaPlayer->content = to_string(player->getMana());
 }
-
-// añadir menú con controles
 
 void GameLayer::loadMap(string name) {
 	char character;
@@ -304,9 +302,9 @@ void GameLayer::update() {
 	newCrystalTime--;
 	if (newCrystalTime <= 0) {
 		int rX = rand() % (WIDTH - 50);
-		int rY = (rand() % (HEIGHT - 400)) + 200;
+		int rY = (rand() % 90) + (HEIGHT - 150);
 		manaCrystals.push_back(new ManaCrystal(rX, rY, game));
-		newCrystalTime = 300;
+		newCrystalTime = 200;
 	}
 
 	newEnemyAttack--;
@@ -362,7 +360,7 @@ void GameLayer::update() {
 	list<Creature*> deletePlayerCreatures;
 	list<Creature*> deleteEnemyCreatures;
 
-	for (auto const& crystal : manaCrystals) {
+	/*for (auto const& crystal : manaCrystals) {
 		if (player->isOverlap(crystal)) {
 			player->increaseMana(1);
 			textManaPlayer->content = to_string(player->getMana());
@@ -385,7 +383,7 @@ void GameLayer::update() {
 				deleteItems.push_back(crystal);
 			}
 		}
-	}
+	}*/
 
 	// comprobar vida de cada criatura y eliminar si muerta 
 	for (auto &const creature : playerCreatures) {
