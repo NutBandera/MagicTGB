@@ -3,13 +3,12 @@
 
 
 Enemy::Enemy(float x, float y, Game* game)
-	: Actor("res/enemigo.png", x, y, 140, 200, game) {
-	aIdle = new Animation("res/Enemy/idle.png", width, height, 672, 92, 3, 8, false, game);
-	aRunningFront = new Animation("res/Enemy/run-front.png", width, height, 672, 111, 3, 8, false, game);
-	aRunningBackwards = new Animation("res/Enemy/run-backwards.png", width, height, 592, 111, 3, 8, false, game);
-	aDying = new Animation("res/Enemy/die.png", width, height, 1747, 172, 6, 7, false, game);
-	aAttacking = new Animation("res/Enemy/attack.png", width, height, 2000, 121, 3, 8, false, game);
-	aDead = new Animation("res/Enemy/dead.png", width, height, 168, 121, 6, 1, false, game);
+	: Actor("res/enemigo.png", x, y, 300, 300, game) {
+	aIdle = new Animation("res/Enemy/idle.png", width, height, 1280, 167, 3, 8, false, game);
+	aRunningFront = new Animation("res/Enemy/run-left.png", width, height, 1280, 167, 3, 8, false, game);
+	aRunningBackwards = new Animation("res/Enemy/run-right.png", width, height, 1280, 167, 3, 8, false, game);
+	aDying = new Animation("res/Enemy/die.png", width, height, 1120, 167, 6, 7, false, game);
+	aAttacking = new Animation("res/Enemy/attack.png", width, height, 1280, 167, 3, 8, false, game);
 	animation = aIdle;
 	audioAttack = new Audio("res/audio-attack.wav", false);
 	state = game->stateMoving;

@@ -15,7 +15,7 @@ public:
 	bool die() override;
 	void reduceLife(int damage) override;
 	int state;
-	int life = 20;
+	int life = 1;
 	int mana = 20;
 	int damage = 4;
 	int getMana();
@@ -34,7 +34,6 @@ public:
 	Animation* aRunningFront;
 	Animation* aRunningBackwards;
 	Animation* aDying;
-	Animation* aDead;
 	Animation* aAttacking;
 	Animation* animation;
 
