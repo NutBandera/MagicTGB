@@ -105,34 +105,34 @@ void Player::attack(list<Creature*> creatures) {
 }
 
 
-// Inferno - 10 points of mana
+// Inferno - 5 points of mana
 int Player::conjuro() {
-	if (mana >= 10) {
+	if (mana >= 5) {
 		state = game->stateShooting;
-		mana -= 10;
+		mana -= 5;
 		audioAttack->play();
-		return 4;
+		return damage*2;
 	}
 	return 0;
 }
 
-// Fervor - 10 points of mana 
+// Fervor - 5 points of mana 
 void Player::encantamiento(list<Creature*> creatures) {
-	if (mana >= 10 && creatures.size() > 0) {
+	if (mana >= 5 && creatures.size() > 0) {
 		state = game->stateShooting;
 		audioAttack->play();
 		for (auto const& creature : creatures) {
 			creature->doubleAttack();
 		}
-		mana -= 10;
+		mana -= 5;
 	}
 }
 
-// 5 points of mana
+// 2 points of mana
 Creature* Player::crearCriatura() {
-	if (mana >= 5) {
+	if (mana >= 2) {
 		state = game->stateShooting;
-		mana -= 5;
+		mana -= 2;
 		audioAttack->play();
 		return new Goblin(x + 50, HEIGHT - 55, game);
 	}

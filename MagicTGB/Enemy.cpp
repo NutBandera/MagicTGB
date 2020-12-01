@@ -130,11 +130,11 @@ Creature* Enemy::createCreature() {
 }
 
 int Enemy::conjuro() {
-	if (mana >= 10) {
+	if (mana >= 5) {
 		state = game->stateShooting;
-		mana -= 10;
+		mana -= 5;
 		audioAttack->play();
-		return 4;
+		return damage*2;
 	}
 	return 0;
 }

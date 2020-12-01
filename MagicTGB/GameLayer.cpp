@@ -360,8 +360,8 @@ void GameLayer::update() {
 	list<Creature*> deletePlayerCreatures;
 	list<Creature*> deleteEnemyCreatures;
 
-	/*for (auto const& crystal : manaCrystals) {
-		if (player->isOverlap(crystal)) {
+	for (auto const& crystal : manaCrystals) {
+		if (player->isOver(crystal)) {
 			player->increaseMana(1);
 			textManaPlayer->content = to_string(player->getMana());
 			bool rInList = std::find(deleteItems.begin(),
@@ -372,7 +372,7 @@ void GameLayer::update() {
 				deleteItems.push_back(crystal);
 			}
 		}
-		if (enemy->isOverlap(crystal)) {
+		if (enemy->isOver(crystal)) {
 			enemy->increaseMana(1);
 			textManaEnemy->content = to_string(enemy->getMana());
 			bool rInList = std::find(deleteItems.begin(),
@@ -383,7 +383,7 @@ void GameLayer::update() {
 				deleteItems.push_back(crystal);
 			}
 		}
-	}*/
+	}
 
 	// comprobar vida de cada criatura y eliminar si muerta 
 	for (auto &const creature : playerCreatures) {

@@ -11,6 +11,7 @@ public:
 	bool containsPoint(int pointX, int pointY);
 	virtual void reduceLife(int damage);
 	virtual bool die();
+	bool isOver(Actor* actor);
 	bool clicked = false;
 	virtual int getLife();
 	int invulnerableTime = 0;
