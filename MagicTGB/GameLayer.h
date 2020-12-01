@@ -35,8 +35,6 @@ public:
 	Actor* messageLose;
 	Actor* messagePause;
 
-	Actor* controlsPanel;
-
 	Audio* audioDie;
 
 	bool pause;

@@ -26,7 +26,7 @@ void Background::update() {
 }
 
 void Background::draw() {
-	Actor::draw(); // super.draw();
+	Actor::draw(); 
 	if (backgroundAux != nullptr) {
 		if (x - width / 2 > 0) {
 			backgroundAux->x = x - width;

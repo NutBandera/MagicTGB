@@ -13,11 +13,9 @@ public:
 	void processControls() override;
 	void keysToControls(SDL_Event event);
 	void mouseToControls(SDL_Event event);
-	//void gamePadToControls(SDL_Event event);
 	bool controlContinue = false;
 	bool controlControls = false;
 	bool controlGuide = false;
-	SDL_GameController* gamePad; // Mando
 	Background* background;
 	Actor* buttonPlay;
 

@@ -19,7 +19,6 @@ public:
 	bool loop;
 	Game* game;
 
-	// Auxiliares
 	SDL_Texture* texture; // imagen
 	SDL_Rect source; // Parte de la imagen que se recorta del fichero
 	float frameWidth; // Ancho de un fotograma

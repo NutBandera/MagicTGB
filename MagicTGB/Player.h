@@ -40,7 +40,7 @@ public:
 	int state;
 };
 
-enum class State { // se usa ?
+enum class State { 
 	IDLE,
 	RUNNING
 };

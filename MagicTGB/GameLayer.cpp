@@ -20,7 +20,7 @@ void GameLayer::init() {
 	buttonShoot = new Actor("res/boton_disparo.png", WIDTH*0.75, HEIGHT*0.83, 100, 100, game);
 
 	audioBackground = new Audio("res/background_music.mp3", true);
-	//audioBackground->play();
+	audioBackground->play();
 
 	space = new Space(1);
 
@@ -43,8 +43,6 @@ void GameLayer::init() {
 	// Background
 	background = new Background("res/fondo1.png", WIDTH*0.5, HEIGHT*0.5, game);
 
-	controlsPanel = new Actor("res/controles.png", WIDTH * 0.21, HEIGHT * 0.89, 209, 70, game);
-
 	audioDie = new Audio("res/audio-die.wav", false);
 
 	buttonReset = new Actor("res/boton-reset.png", WIDTH * 0.5, HEIGHT * 0.7, 157, 53, game);
@@ -58,14 +56,9 @@ void GameLayer::init() {
 }
 
 void GameLayer::processControls() {
-	// obtener controles
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
-		case SDL_CONTROLLERBUTTONDOWN:
-		case SDL_CONTROLLERAXISMOTION:
-			game->input = GameInputType::GAMEPAD;
-			break;
 		case SDL_QUIT:
 			game->loopActive = false;
 			return;
@@ -264,10 +257,8 @@ void GameLayer::keysToControls(SDL_Event event) {
 }
 
 void GameLayer::mouseToControls(SDL_Event event) {
-	// Modificación de coordenadas por posible escalado
 	float motionX = event.motion.x / game->scaleLower;
 	float motionY = event.motion.y / game->scaleLower;
-	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
 		if (buttonReset->containsPoint(motionX, motionY)) {
@@ -478,8 +469,6 @@ void GameLayer::draw() {
 	for (const auto& item : enemyCreatures) {
 		item->draw();
 	}
-
-	//controlsPanel->draw();
 
 	if (pause) {
 		messagePause->draw();

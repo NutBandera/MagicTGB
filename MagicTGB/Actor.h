@@ -18,8 +18,8 @@ public:
 	SDL_Texture* texture;
 	float x;
 	float y;
-	float vx; // velocidad eje x
-	float vy; // velocidad eje y
+	float vx;
+	float vy; 
 	int width;
 	int height;
 	int fileWidth;

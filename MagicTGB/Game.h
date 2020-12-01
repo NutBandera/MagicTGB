@@ -17,7 +17,7 @@ using namespace std;
 class Layer;
 
 enum class GameInputType {
-	KEYBOARD, GAMEPAD, MOUSE
+	KEYBOARD, MOUSE
 };
 
 class Game

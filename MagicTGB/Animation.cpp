@@ -3,10 +3,6 @@
 Animation::Animation(string filename, float actorWidth, float actorHeight,
 	float fileWidth, float fileHeight,
 	int updateFrecuence, int totalFrames, bool loop, Game* game) {
-
-	// Cargar textura
-	/*SDL_Surface* surface = IMG_Load(filename.c_str());
-	texture = SDL_CreateTextureFromSurface(game->renderer, surface);*/
 	texture = game->getTexture(filename);
 	this->actorWidth = actorWidth;
 	this->actorHeight = actorHeight;
@@ -17,14 +13,12 @@ Animation::Animation(string filename, float actorWidth, float actorHeight,
 	this->game = game;
 	this->loop = loop;
 
-	updateTime = 0; // última actualización
+	updateTime = 0;
 	currentFrame = 0;
 
-	// Calcular lo que mide un fotograma/frame
 	frameWidth = fileWidth / totalFrames;
 	frameHeight = fileHeight;
 
-	// Rectangulo de recorte de fotograma
 	source.x = 0;
 	source.y = 0;
 	source.w = frameWidth;
@@ -46,7 +40,7 @@ bool Animation::update() {
 	}
 
 	source.x = currentFrame * frameWidth;
-	return false; // animaciones infinitas
+	return false; 
 }
 
 void Animation::draw(float x, float y) {
@@ -56,7 +50,6 @@ void Animation::draw(float x, float y) {
 	destination.w = actorWidth;
 	destination.h = actorHeight;
 
-	// Modificar para que la referencia sea el punto central
 	SDL_RenderCopyEx(game->renderer,
 		texture, &source, &destination, 0, NULL, SDL_FLIP_NONE);
 
