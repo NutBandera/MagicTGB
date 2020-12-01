@@ -11,7 +11,7 @@ class Enemy : public Actor
 public:
 	Enemy(float x, float y, Game* game);
 	void update(list<Creature*>creatures, list<ManaCrystal*> crystals);
-	void draw(float scrollX) override;
+	void draw() override;
 	bool die() override;
 	void reduceLife(int damage) override;
 	int state;

@@ -28,9 +28,7 @@ public:
 	void keysToControls(SDL_Event event);
 	int newCrystalTime = 10;
 	int newEnemyAttack = 10;
-	void calculateScroll(); // del
-	float scrollX; // del 
-	void mouseToControls(SDL_Event event); // USO DE MOUSE
+	void mouseToControls(SDL_Event event); 
 	
 	Actor* messageGuide;
 	Actor* messageWin;

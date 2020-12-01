@@ -52,7 +52,7 @@ void Enemy::update(list<Creature*> creatures, list<ManaCrystal*> crystals) {
 
 }
 
-void Enemy::draw(float scrollX) {
+void Enemy::draw() {
 	if (invulnerableTime == 0) {
 		animation->draw(x, y);
 	}

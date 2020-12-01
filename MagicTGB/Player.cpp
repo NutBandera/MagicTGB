@@ -60,7 +60,7 @@ int Player::getLife() {
 	return life;
 }
 
-void Player::draw(float scrollX) {
+void Player::draw() {
 	if (invulnerableTime == 0) {
 		animation->draw(x, y);
 	}
@@ -99,7 +99,7 @@ void Player::attack(list<Creature*> creatures) {
 	audioAttack->play();
 	for (auto &const creature : creatures) {
 		if (abs(x - creature->x) <= 30) {
-			creature->reduceLife(2);
+			creature->reduceLife(damage);
 		}
 	}
 }

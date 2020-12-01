@@ -12,7 +12,7 @@ public:
 	Player(float x, float y, Game* game);
 	void update();
 	void moveX(float axis);
-	void draw(float scrollX = 0) override;
+	void draw() override;
 	void reduceLife(int damage) override;
 	bool die() override;
 	void increaseMana(int mana);
@@ -24,6 +24,7 @@ public:
 
 	int life = 20;
 	int mana = 20;
+	int damage = 2;
 	int getMana();
 	int getLife() override;
 

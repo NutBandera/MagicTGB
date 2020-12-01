@@ -23,7 +23,6 @@ void GameLayer::init() {
 	//audioBackground->play();
 
 	space = new Space(1);
-	scrollX = 0;
 
 	// Player manaCrystals
 	textManaPlayer = new Text("20", WIDTH * 0.16, HEIGHT * 0.05, game);
@@ -454,39 +453,25 @@ void GameLayer::update() {
 }
 
 
-void GameLayer::calculateScroll() {
-	if (player->x > WIDTH * .3) {
-		if (player->x - scrollX < WIDTH * .3) {
-			scrollX = player->x - WIDTH * .3;
-		}
-	}
-	if (player->x < mapWidth - WIDTH * .3) {
-		if (player->x - scrollX > WIDTH * .7) {
-			scrollX = player->x - WIDTH * .7;
-		}
-	}
-}
-
 void GameLayer::draw() {
-	calculateScroll();
-	background->draw(0);
-	backgroundPlayerLife->draw(0);
-	backgroundManaPlayer->draw(0);
+	background->draw();
+	backgroundPlayerLife->draw();
+	backgroundManaPlayer->draw();
 	textManaPlayer->draw();
-	backgroundManaEnemy->draw(0);
+	backgroundManaEnemy->draw();
 	textManaEnemy->draw();
 	textPlayerLife->draw();
 	textEnemyLife->draw();
 
 	for (const auto& tile : tiles) {
-		tile->draw(0);
+		tile->draw();
 	}
 	for (const auto& item : manaCrystals) {
-		item->draw(0);
+		item->draw();
 	}
 
-	player->draw(0);
-	enemy->draw(0);
+	player->draw();
+	enemy->draw();
 
 	for (const auto& item : playerCreatures) {
 		item->draw();

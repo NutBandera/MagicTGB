@@ -25,7 +25,7 @@ int Actor::getVX() {
 }
 
 
-void Actor::draw(float scrollX) {
+void Actor::draw() {
 	// Recorte en el fichero de la imagen
 	SDL_Rect source;
 	source.x = 0;
@@ -34,7 +34,7 @@ void Actor::draw(float scrollX) {
 	source.h = fileHeight;
 	// Donde se va a pegar en el renderizador
 	SDL_Rect destination;
-	destination.x = x - width / 2 - scrollX;;
+	destination.x = x - width / 2;
 	destination.y = y - height / 2;
 	destination.w = width;
 	destination.h = height;
@@ -61,8 +61,8 @@ Actor::~Actor() {
 	//SDL_DestroyTexture(texture);
 }
 
-bool Actor::isInRender(float scrollX) {
-	if (x - width / 2 - scrollX <= WIDTH && x + width / 2 - scrollX >= 0
+bool Actor::isInRender() {
+	if (x - width / 2 <= WIDTH && x + width / 2 >= 0
 		&& y - height / 2 <= HEIGHT && y + height / 2 >= 0) {
 		return true;
 	}
@@ -79,7 +79,7 @@ bool Actor::containsPoint(int pointX, int pointY) {
 	return false;
 }
 
-void Actor::reduceLife(int damage) {} // 
+void Actor::reduceLife(int damage) {} 
 bool Actor::die() {
 	return true;
 } 

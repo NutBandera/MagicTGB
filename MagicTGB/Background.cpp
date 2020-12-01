@@ -25,7 +25,7 @@ void Background::update() {
 	}
 }
 
-void Background::draw(float scrollX) {
+void Background::draw() {
 	Actor::draw(); // super.draw();
 	if (backgroundAux != nullptr) {
 		if (x - width / 2 > 0) {

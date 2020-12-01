@@ -5,9 +5,9 @@ class Actor {
 public:
 	Actor(string filename, float x, float y, int width, int height, Game* game);
 	~Actor();
-	virtual void draw(float scrollX = 0);
+	virtual void draw();
 	bool isOverlap(Actor* actor);
-	bool isInRender(float scrollX = 0);
+	bool isInRender();
 	bool containsPoint(int pointX, int pointY);
 	virtual void reduceLife(int damage);
 	virtual bool die();
