@@ -84,39 +84,41 @@ void GameLayer::processControls() {
 		controlContinue = false;
 	}
 
-	if (controlMoveX > 0 && player->x != WIDTH) {
-		player->moveX(1);
-	}
-	else if (controlMoveX < 0 && player->x >= 50) {
-		player->moveX(-1);
-	}
-	else {
-		player->moveX(0);
-	}
-
-	if (controlShoot) {
-		player->attack(enemyCreatures);
-		controlShoot = false;
-	}
-
-	if (controlConjuro) {
-		int damage = player->conjuro();
-		if (damage > 0) {
-			enemy->reduceLife(damage);
+	if (!winGame && !loseGame) {
+		if (controlMoveX > 0 && player->x != WIDTH) {
+			player->moveX(1);
 		}
-		controlConjuro = false;
-	}
-	if (controlCriatura) {
-		Creature* c = player->crearCriatura();
-		if (c != NULL) {
-			playerCreatures.push_back(c);
-			space->addDynamicActor(c);
+		else if (controlMoveX < 0 && player->x >= 50) {
+			player->moveX(-1);
 		}
-		controlCriatura = false;
-	}
-	if (controlEncantamiento) {
-		player->encantamiento(playerCreatures);
-		controlEncantamiento = false;
+		else {
+			player->moveX(0);
+		}
+
+		if (controlShoot) {
+			player->attack(enemyCreatures);
+			controlShoot = false;
+		}
+
+		if (controlConjuro) {
+			int damage = player->conjuro();
+			if (damage > 0) {
+				enemy->reduceLife(damage);
+			}
+			controlConjuro = false;
+		}
+		if (controlCriatura) {
+			Creature* c = player->crearCriatura();
+			if (c != NULL) {
+				playerCreatures.push_back(c);
+				space->addDynamicActor(c);
+			}
+			controlCriatura = false;
+		}
+		if (controlEncantamiento) {
+			player->encantamiento(playerCreatures);
+			controlEncantamiento = false;
+		}
 	}
 
 	textManaPlayer->content = to_string(player->getMana());
@@ -213,7 +215,7 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_p: // pausa
 			pause = true;
 			break;
-		case SDLK_SPACE: // dispara
+		case SDLK_SPACE: 
 			controlShoot = true;
 			break;
 		case SDLK_ESCAPE:
@@ -247,7 +249,7 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_l:
 			controlEncantamiento = true;
 			break;
-		case SDLK_SPACE: // dispara
+		case SDLK_SPACE:
 			controlShoot = false;
 			break;
 		}
@@ -316,7 +318,7 @@ void GameLayer::update() {
 				space->addDynamicActor(c);
 			}
 		}
-		newEnemyAttack = 300;
+		newEnemyAttack = 200;
 	}
 
 	space->update();

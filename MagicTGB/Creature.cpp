@@ -66,7 +66,7 @@ void Creature::draw() {
 
 void Creature::moveToEnemy(Actor* e) {
 	if (side == 0) {
-		if (abs(e->x - x) <= 30) { // crete get x()
+		if (abs(e->x - x) <= 30) { 
 			vx = 0;
 			if (x > e->x) {
 				orientation = -1;
@@ -77,7 +77,7 @@ void Creature::moveToEnemy(Actor* e) {
 			attack(e);
 		}
 		else {
-			if (e->x > x) { // or equal ??
+			if (e->x > x) { 
 				vx = 2;
 			}
 			else {
@@ -98,7 +98,7 @@ void Creature::moveToEnemy(Actor* e) {
 			attack(e);
 		}
 		else {
-			if (e->x < x) { // or equal ??
+			if (e->x < x) { 
 				orientation = -1;
 				vx = -2;
 			}
@@ -121,7 +121,7 @@ void Creature::attack(Actor* e) {
 
 void Creature::reduceLife(int damage) {
 	if (invulnerableTime <= 0 && life > 0) {
-		invulnerableTime = 50;
+		invulnerableTime = 30;
 		life -= damage;
 	}
 }
